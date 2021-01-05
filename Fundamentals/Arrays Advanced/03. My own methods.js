@@ -30,4 +30,31 @@ function myIndexOf(array, value){
 }
 console.log(myIndexOf(myArray, '30')); // 1
 
+//Map function
+/*
+ function doubleSum(num){
+    return num * 2;
+ }
 
+ let testArr = [7, -2, 8, 9, 11, -3, 14];
+ let doubled = testArr.map(doubleSum);
+ console.log(testArr);
+ console.log(doubled);
+ */
+
+function myMap(_array, _function){
+    let result = [];
+
+    for (const element of _array) {
+        let mapped = _function(element);
+        result.push(mapped);
+    }
+    return result;
+}
+
+let numsAsStrings = ['5', '3', '14', '-2', '8'];
+console.log(numsAsStrings);
+let nums = myMap(numsAsStrings, Number);
+console.log(nums);
+let increm = myMap(nums, x => x+1);
+console.log(increm);
