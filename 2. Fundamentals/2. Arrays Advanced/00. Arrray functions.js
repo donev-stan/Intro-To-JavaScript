@@ -10,7 +10,7 @@ function arrayFunctions(){
     
     
     let demoArray = [0, 1, 2, 3, 4, 5]; 
-    
+
     /*
     // .slice()
     console.log(`--- .splice() ---`);
@@ -38,9 +38,12 @@ function arrayFunctions(){
    console.log(filteredDemoArray); // (3) [1, 3, 5]
    */
 
+    /*    
     // .map() --- returns new array
     let mapArray = demoArray.map((number) => number+2); // Adds 2 to every el of the array
     console.log(mapArray);
+    */
+
   
 }
 arrayFunctions();
