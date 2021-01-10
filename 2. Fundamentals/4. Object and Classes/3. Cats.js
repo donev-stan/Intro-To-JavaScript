@@ -1,16 +1,16 @@
-function solve(catsAsStrings){
-    // declare class
-    class Cat{
-        constructor(name, age){
-            this.name = name;
-            this.age = age;
-        }
-
-        meow(){
-            console.log(`${this.name}, age ${this.age} says Meow!`);
-        }
+// declare class
+class Cat{
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
     }
 
+    meow(){
+        console.log(`${this.name}, age ${this.age} says Meow!`);
+    }
+}
+
+function solve(catsAsStrings){
     //let myCat = new Cat('Lilly', 1);
     //console.log(myCat);
     //myCat.meow();
@@ -29,4 +29,3 @@ function solve(catsAsStrings){
     }
 }
 solve(['Lilly 1', 'Tom 5', 'Mellow 2']);
-
