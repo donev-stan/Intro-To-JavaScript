@@ -18,6 +18,15 @@ function solve(array){
             longitude: Number(longitude).toFixed(2)
         }
 
+        /* Same ---------------------- 
+        const tokens = line.split(' | ');
+        const town = {
+            town: tokens[0],
+            latitude:  Number(tokens[1]).toFixed(2),
+            longitude: Number(tokens[2]).toFixed(2)
+        }
+        */
+
         console.log(obj);
     }
 }
