@@ -10,4 +10,31 @@
     Calculate the time needed to answer all the student's questions and print it in the following format: "Time needed: {time}h."
 */
 
- 
+ // function solve([eff1, eff2, eff3, students]){ }
+
+ function solve(inputArr){
+    // start the initial count
+
+    // turn every element into number --- inputArr = inputArr.map(Number);
+    // ..or we know the size so:
+    let [eff1, eff2, eff3, students] = inputArr.map(Number);
+    
+    // calculate total efficiency
+    let efficiency = eff1 + eff2 + eff3;
+
+    let hour = 0;
+    while (students > 0) {
+        hour++;
+        // +skip every 4th hour
+        if (hour % 4 !== 0) {
+            // each hour subtract answered questions
+            students -= efficiency;
+        }
+    }
+    console.log(hour); 
+    console.log("-------------------------------");
+ } 
+
+ solve(['5','6','4','20']);
+ solve(['1','2','3','45']);
+ solve(['3','2','5','40']);
