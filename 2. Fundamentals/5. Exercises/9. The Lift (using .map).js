@@ -7,13 +7,14 @@ function solve(array){
 
     let waiting = Number(array[0]); 
 
-    let wagons = array[1].split(' ').map(Number); 
+    let wagons = array.pop().split(' ').map(Number); 
 
-    while (waiting !== 0) {
-        wagons = wagon.map( w => {
+    while (waiting !== 0 && isFree(wagons)) {
+        wagons = wagons.map( w => {
             let n = 4 - w; // n = number of available spaces in a wagon
+            // Shorter way ---> let n = 4 - w > waiting ? waiting : 4 - w;
             if (n < waiting) {
-                 
+                n = waiting;
             }
             waiting -= n;
             w += n;
@@ -21,15 +22,27 @@ function solve(array){
         })
     }
 
+    function isFree(array){
+        return array.filter( x => x < 4).length > 0;
+    }
+
+    // .. or (more explicit way)
+
+    function isThereFree(array){
+        let filtered = array.filter(x => x < 4);
+        return filtered.length > 0;
+    }
+
+    console.log(wagons);
     console.log('---------------------------');
 }
 
-solve(
-    [
-        "15",
-        "0 0 0 0 0"
-    ]
-)
+// solve(
+//     [
+//         "15",
+//         "0 0 0 0 0"
+//     ]
+//)
 
 solve(
     [
