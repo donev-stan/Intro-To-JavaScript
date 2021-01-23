@@ -15,7 +15,7 @@ function solve(input){
         phonebook[name] = phone;
     }
 
-    // printt result
+    // print result
     for (const name in phonebook) {
         console.log(`${name} -> ${phonebook[name]}`);
     }

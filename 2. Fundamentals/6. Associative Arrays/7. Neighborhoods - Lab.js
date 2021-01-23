@@ -11,6 +11,37 @@
 
 function solve(input){
 
+    let neighborhoods = getNeighborhoods(input);
+
+    function getNeighborhoods(array){
+        let obj = {};
+        
+        array.shift().split(', ').forEach( hood => {
+            obj[hood] = [];
+        });;
+        return obj;
+    }
+
+    input.forEach( line => {
+        let [hood, person] = line.split(' - ');
+
+        if(neighborhoods.hasOwnProperty(hood)){
+            neighborhoods[hood].push(person);
+        }
+    });
+
+    for (const key in neighborhoods) {
+        if(neighborhoods[key].length !== 0){
+            console.log(`${key}: ${neighborhoods[key].length} -- ${neighborhoods[key].join(', ')}`);
+        }
+        else{
+            console.log(`${key}: ${neighborhoods[key].length} -- Nobody Here!`);
+        }
+    }
+
+    console.log(neighborhoods);
+
+
 }
 
 solve(
