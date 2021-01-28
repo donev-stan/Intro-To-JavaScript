@@ -1,39 +1,35 @@
 const { request } = require('express');
 let express = require('express');
+let handlebars = require('express-handlebars');
+let fs = require('fs');
+
 
 let app = express();
 let port = 3000;
 
+app.engine('hbs', handlebars());
+app.set('view engine', 'hbs');
+
 app.get('/', function(request, response){
-    response.send('Hello World!');
+    response.render('home', {layout: false});
 });
 
 app.get('/catalog', (request, response) =>{
-    response.send(`Catalog Page`);
+    response.render(`catalog`, {layout: false, products});
 });
-
 
 app.get('/catalog/:serial_number', (request, response) =>{
     
-    let products = [
-        '123',
-        '456',
-        '789'
-    ];
+    let products = JSON.parse(fs.readFileSync('./data/product.json', 'utf-8'));
     
     let sn = request.params.serial_number;
-
+    
     if (products.find(x => x == sn)) {
-        response.send(`
-            <h1> Catalog Page </h1>
-            <p> Product S/N: ${sn} </p>
-        `);
+        response.render('details', { layout: false, sn});
     } else {
         response.status(404);
-        response.send(`<p> Error 404: Product with S/N ${sn} not found </p>`);
+        response.render('404', {layout: false});
     }
-
-   
 });
 
 app.listen(port, () => {
