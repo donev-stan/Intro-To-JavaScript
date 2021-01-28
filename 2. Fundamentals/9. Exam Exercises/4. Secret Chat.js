@@ -12,7 +12,12 @@ function solve(input){
                 word.push(message[i]);
             }
 
-            let result = word.join('');        
+            /* Another shorter way  --- .substring() 
+            message = message.substring(0, index) + " " + message.substring(index)
+            return message;
+            */
+
+            let result = word.join('');    
             return result;
         },
 
@@ -63,6 +68,7 @@ function solve(input){
         let [command, ...params] = cmd.split(':|:');
 
         msg = actions[command](msg, ...params);
+        console.log(msg);
 
     }
 
