@@ -16,5 +16,5 @@ console.log(data.age); // 22
 console.log(data.position); // Developer
 
 // To change the file: 
-fs.writeFileSync('./dataChanged.json', JSON.stringify(data), 'utf-8');
+fs.writeFileSync('./dataChanged.json', JSON.stringify(data, null, 2), 'utf-8');
 // file "dataChanged.json" is created with the data that we changed above

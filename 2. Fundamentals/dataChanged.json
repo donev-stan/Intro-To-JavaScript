@@ -1,1 +1,5 @@
-{"name":"Stanislav","age":22,"position":"Developer"}
+{
+  "name": "Stanislav",
+  "age": 22,
+  "position": "Developer"
+}
