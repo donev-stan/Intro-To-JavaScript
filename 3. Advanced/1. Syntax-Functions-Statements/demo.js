@@ -37,3 +37,16 @@ function pow(a, b){
     return a ** b;
 }
 console.log(`pow func using ** operator:  ${pow(5, 2)}`);
+
+
+// Strange JS stuff -- passing function as a param
+
+let sumAB = (a, b) => a + b;
+
+function calculate(operation, firstArgumnet, secondArgument){
+    let operationresult = operation(firstArgumnet, secondArgument);
+    return operationresult;
+}
+
+let resultTwo = calculate(sumAB, 5, 15);
+console.log(`Passing func as a param/arg result: ${result}`);
