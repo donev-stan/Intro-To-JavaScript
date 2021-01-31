@@ -15,7 +15,7 @@ function solve(array){
         cars[carBrand][carModel] += Number(producedCars);
     });
 
-    for (const brand of Object.keys(cars)) {
+    for (const brand in cars) {
         console.log(`${brand}`);
         for (const model of Object.keys(cars[brand])) {
             console.log(`   ${model}: ${cars[brand][model]}`);

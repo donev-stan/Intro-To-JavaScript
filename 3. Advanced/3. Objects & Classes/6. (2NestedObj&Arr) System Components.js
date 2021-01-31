@@ -24,13 +24,13 @@ function solve(array){
     Object.entries(catalog).sort((a,b) => {
         return Object.keys(b[1]).length - Object.keys(a[1]).length || a[0].localeCompare(b[0]);
     }).forEach(([system, component]) => {
-        console.log(system);
+        console.log(`\n${system}`);
         Object.entries(component)
         .sort((a, b) => (b[1]).length - (a[1]).length)
-        .forEach(([name, sub]) => {
-            console.log(`|||${name}`);
+        .forEach(([nameComponent, sub]) => {
+            console.log(`--${nameComponent}`);
             sub.forEach( s =>{
-                console.log(`||||||${s}`);
+                console.log(`   =>${s}`);
             });
         })
     });

@@ -1,5 +1,5 @@
 class Ticket {
-    constructor(descriptor){
+    constructor(descriptor){ // descriptor contains the actual ticket => 'Philadelphia|94.20|available'
         const [destination, price, status] = descriptor.split('|');
 
         this.destination = destination;
@@ -23,8 +23,8 @@ let one = solve(
     ['Philadelphia|94.20|available',
     'New York City|95.99|available',
     'New York City|95.99|sold',
-    'Boston|126.20|departed'],
-    'destination'
+    'Boston|126.20|departed'],      // array is tickets
+    'destination'               // 'destination' is criteria
 )
 
 
