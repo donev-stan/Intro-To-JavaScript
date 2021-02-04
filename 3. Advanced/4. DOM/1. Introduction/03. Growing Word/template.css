@@ -58,6 +58,7 @@ button {
     width: 30%;
     font-size: 25px;
     padding: 15px 0;
+    cursor: pointer;
 }
 
 #exercise p {
