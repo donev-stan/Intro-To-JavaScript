@@ -1,3 +1,21 @@
+function solve(){
+    document.getElementsByTagName('button')[0].onclick = function exe (){
+        let inputName = document.getElementsByTagName('input')[0];
+
+        let firstLetterCode = (inputName.value).toLocaleUpperCase().charCodeAt(0);
+
+        // accessing the catalogue
+        let a = document.getElementsByTagName('li')[firstLetterCode - 65];
+
+        // making the name start with Upper letter and the rest with Lower letters
+        let nameToPush = (inputName.value[0]).toLocaleUpperCase() + (inputName.value).slice(1).toLocaleLowerCase();
+
+        (a.textContent === '') ? a.textContent = nameToPush : a.textContent += ', ' + nameToPush;
+
+        inputName.value = '';
+    }
+}
+
 /*
 function solve() {
   document.querySelector("button").addEventListener("click", onClick);
@@ -37,21 +55,3 @@ function solve() {
   }
 }
 */
-
-function solve(){
-    document.getElementsByTagName('button')[0].onclick = function exe (){
-        let inputName = document.getElementsByTagName('input')[0];
-
-        let firstLetterCode = (inputName.value).toLocaleUpperCase().charCodeAt(0);
-
-        // accessing the catalogue
-        let a = document.getElementsByTagName('li')[firstLetterCode - 65];
-
-        // making the name start with Upper letter and the rest with Lower letters
-        let nameToPush = (inputName.value[0]).toLocaleUpperCase() + (inputName.value).slice(1).toLocaleLowerCase();
-
-        (a.textContent === '') ? a.textContent = nameToPush : a.textContent += ', ' + nameToPush;
-
-        inputName.value = '';
-    }
-}
