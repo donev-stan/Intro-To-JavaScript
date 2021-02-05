@@ -15,7 +15,6 @@ function growingWord() {
   title.style.color = color;
 }
 
-
 /*
 <div id="blueDiv">Blue</div>
 <div id="greenDiv">Green</div>
