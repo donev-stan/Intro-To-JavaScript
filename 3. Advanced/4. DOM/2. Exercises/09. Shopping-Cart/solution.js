@@ -34,8 +34,9 @@ function solve() {
       const msg = `You bought ${productList.join(', ')} for ${totalPrice.toFixed(2)}.`;
       cartSection.append(msg);
 
-      [...document.querySelectorAll('button')].forEach(btn => btn.disabled = true);
-
+      //[...document.querySelectorAll('button')].forEach(btn => btn.disabled = true);
+      [...document.querySelectorAll('button')].forEach(btn => btn.removeEventListener('click', addToCart));
+      
       totalPrice = 0;
    }
 }
