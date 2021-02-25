@@ -84,7 +84,7 @@ class Company {
     }
 
     function getAverage(previous, current) {
-      return previous + current.salary();
+      return previous + current.salary;
     }
   }
 
