@@ -1,7 +1,46 @@
-// Higher order functions
+// First-Class Functions
+console.log("> First Class Functions:");
+//-- Treated like any other variable:
+//  --- Passed as an argiment
+//  --- Returned by another func
+//  --- Assigned as a value to a variable
+let sayHello = () => "Hello, ";
+let greeting = (helloMessage, name) => helloMessage() + name;
+console.log(greeting(sayHello, "Stan!"));
+
+
+// Higher-Order Functions
+//-- Take other functions as an argument or return a function as a result 
+
+
+// Predicates
+console.log("> Predicates:");
+//-- Any func that returns a bool based on evaluation of the truth of an assertion
+//-- Predicates are often found in the form of callbacks
+let array = [1, 2, 10, 12];
+let found = array.find(isFound);
+let isFound = (element) => element > 10; // True or false
+console.log(found); // 12
+
+
+// Built-in Higher Order Functions
+//-- Array.prototype.map
+//-- Array.prototype.filter
+//-- Array.prototype.reduce
+
+
+// Pure functions
+//-- Returns the same result given same parameters
+//-- Its exception doesnt depend on the sate of the system
+
+
+// Referental Transparency
+//-- An expression that can be replaced with its corresponding value without changing the programs behavior.
+
+
 
 // Curring
-console.log("> Curring");
+console.log("> Curring:");
 //-- Always produces nested unary func (that take only one arg)
 let sum = function (a) {
     return function (b) {
@@ -21,12 +60,11 @@ console.log(sum(1)(2)(3)); // 6
 
 
 // Partial Application
-console.log("> Partial Application");
+console.log("> Partial Application:");
 //-- Converting a func with a given num of args into a func with smaller num of args.
 //-- Pass the remaining params when a result is needed.
 //-- The partially applied func can be used multiple times.
 //-- Produces funcs of arbitrary number of args.
-
 let pow = (x, y) => x ** y;
 console.log(pow(4, 2)); // 16
 
@@ -36,7 +74,7 @@ console.log(sqrt(4)); // 16
 
 
 // Immediately-Invoked Func Expressions
-console.log("> IIFE");
+console.log("> IIFE:");
 //-- Func that is executed immediately.
 (function () {
     console.log("This is an IIFE");
@@ -50,7 +88,7 @@ console.log(resultIIFE);
 
 
 // Closure
-console.log("> Closure");
+console.log("> Closure:");
 //-- The scope of an inner func includes the scope of the outer func.
 //-- An inner func retains variables being used from the outer function scope even after the parent function has returned.
 //-- A state is preserved in the outer func (closure)
@@ -70,7 +108,7 @@ console.log(returnedInnerFunction());  // I am an inner variable!
 
 
 // Error Handling
-console.log("> Error Handling");
+console.log("> Error Handling:");
 //-- The findamental principle of error handling says that a func (method) should either:
 //  --- Do what its name suggest
 //  --- Indicate a problem
