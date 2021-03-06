@@ -6,7 +6,8 @@ console.log("> First Class Functions:");
 //  --- Assigned as a value to a variable
 let sayHello = () => "Hello, ";
 let greeting = (helloMessage, name) => helloMessage() + name;
-console.log(greeting(sayHello, "Stan!"));
+console.log(greeting(sayHello, "Stan!")); // Hello, Stan!
+//-- Can be returned by another function
 
 
 // Higher-Order Functions
