@@ -1,7 +1,7 @@
 // First-Class Functions
 console.log("> First Class Functions:");
 //-- Treated like any other variable:
-//  --- Passed as an argiment
+//  --- Passed as an argument
 //  --- Returned by another func
 //  --- Assigned as a value to a variable
 let sayHello = () => "Hello, ";
@@ -19,15 +19,18 @@ console.log("> Predicates:");
 //-- Any func that returns a bool based on evaluation of the truth of an assertion
 //-- Predicates are often found in the form of callbacks
 let array = [1, 2, 10, 12];
-let found = array.find(isFound);
 let isFound = (element) => element > 10; // True or false
+let found = array.find(isFound);
 console.log(found); // 12
 
 
 // Built-in Higher Order Functions
 //-- Array.prototype.map
+// The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.
 //-- Array.prototype.filter
+// The filter() method creates a new array with all elements that pass the test implemented by the provided function.
 //-- Array.prototype.reduce
+// The reduce() method executes a reducer function (that you provide) on each element of the array, resulting in single output value.
 
 
 // Pure functions
