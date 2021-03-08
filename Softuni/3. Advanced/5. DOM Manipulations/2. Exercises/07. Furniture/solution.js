@@ -62,4 +62,4 @@ function solve() {
 
     output.value = result.join('\n');
   }
-}
+} 

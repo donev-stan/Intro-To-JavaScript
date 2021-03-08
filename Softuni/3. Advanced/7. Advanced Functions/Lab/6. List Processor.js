@@ -10,18 +10,24 @@ function solve(input){
         let [command, arg] = element.split(' ');
 
         if (command === 'add') {
-            output.push(arg);
+            add(arg);
         } else if (command === 'remove') {
             if (output.find(word => word === arg)) {
-
+                let index = output.indexOf(arg);
+                remove(index);
             }
-        } 
+        } else if (command === 'print') {
+            console.log(output);
+        }
     });
 
-    return {
-        
+    function add(arg) {
+        output.push(arg);
+    }
+
+    function remove(index) {
+        output.splice(index, 1);
     }
 }
 
-const output = solve();
-output(['add hello', 'add again', 'remove hello', 'add again', 'print']);
+solve(['add hello', 'add again', 'remove hello', 'add again', 'print']);

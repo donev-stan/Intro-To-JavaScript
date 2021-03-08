@@ -9,7 +9,7 @@ function solution(){
     return {
         append: (string) => str += string,
         removeStart: (n) => str = str.substring(n),
-        removeEnd: (n) => str = str.substring(0, str.length - n),
+        removeEnd: (n) => str = str.substring(0, str.length - n), // slice(0, -n)
         print: () => console.log(str)
     }
 }

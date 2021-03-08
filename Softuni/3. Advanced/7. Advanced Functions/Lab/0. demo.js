@@ -69,8 +69,11 @@ console.log("> Partial Application:");
 let pow = (x, y) => x ** y;
 console.log(pow(4, 2)); // 16
 
-let sqrt = pow.bind(null, 2);
-console.log(sqrt(4)); // 16
+let sqr = pow.bind(null, 2);
+console.log(sqr(4)); // 16
+
+let sqr1 = (num) => { return pow(num, 2)};
+console.log(sqr1(4)); // 16
 
 
 
