@@ -14,6 +14,21 @@ function solve(){
     }
 
     Object.entries(argTypes).sort((a, b) => b[1] - a[1]).forEach(element => console.log(`${element[0]} = ${element[1]}`));
+
+    /*
+        Object.entries(argTypes).sort((a, b) => {
+            const [aKey, aValue] = a;
+            const [bKey, bValue] = b;
+
+            return bValue - aValue;
+        })
+        .forEach(element => {
+            const [type, value] = element;
+
+            console.log(`${type} = ${value}`);
+        })
+
+    */
 }
 
 // argTypes will look like this:

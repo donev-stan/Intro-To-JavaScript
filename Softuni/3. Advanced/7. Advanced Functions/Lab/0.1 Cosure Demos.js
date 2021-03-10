@@ -47,4 +47,4 @@ console.log((myRect.getArea())); // 21 (7*3)
 
 // even if we try to change the property width e.g:
 myRect.width = 8; // this wont do shit
-*//*
+*/
