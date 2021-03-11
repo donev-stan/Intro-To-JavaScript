@@ -54,9 +54,9 @@ let sum = function (a) {
     };
 };
 
-let sumB = sum(1);
-let sumC = sumB(2);
-let result = sumC(3);
+let sumB = sum(1); // A func will ALWAYS return something (theres no void funcs). In this case = 1
+let sumC = sumB(2); // saves the result of that func = 3
+let result = sumC(3); // и референция към нея
 console.log(result); // 6
 
 console.log(sum(1)(2)(3)); // 6
@@ -72,11 +72,11 @@ console.log("> Partial Application:");
 let pow = (x, y) => x ** y;
 console.log(pow(4, 2)); // 16
 
-let sqr = pow.bind(null, 2);
-console.log(sqr(4)); // 16
+let square = pow.bind(null, 2);
+console.log(square(4)); // 16
 
-let sqr1 = (num) => { return pow(num, 2)};
-console.log(sqr1(4)); // 16
+let square1 = (num) => { return pow(num, 2)};
+console.log(square1(4)); // 16
 
 
 
