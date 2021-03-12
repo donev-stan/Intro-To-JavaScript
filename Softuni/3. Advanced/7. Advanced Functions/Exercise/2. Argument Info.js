@@ -46,3 +46,7 @@ const demo = {
 ]
 
 solve('cat', 42, 24, function () { console.log('Hello world!'); });
+
+
+// Using Map
+// https://youtu.be/qx2qytDPI8k?list=PLa6_uta9oizKL2Z_wqPnLI2-Kfud3sddo&t=4971 (1:22:00)  

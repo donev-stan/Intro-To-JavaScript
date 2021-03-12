@@ -69,7 +69,7 @@ console.log("> Partial Application:");
 //-- Pass the remaining params when a result is needed.
 //-- The partially applied func can be used multiple times.
 //-- Produces funcs of arbitrary number of args.
-let pow = (x, y) => x ** y;
+let pow = (number, power) => number ** power;
 console.log(pow(4, 2)); // 16
 
 let square = pow.bind(null, 2);
