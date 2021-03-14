@@ -1,3 +1,24 @@
+// Clean:
+function solve(input){
+    let result = input.map(([width, height]) => {
+        return {
+            width,
+            height,
+            area: () => width * height,
+            compareTo(rect) {
+                return this.area() - rect.area() || this.width - rect.width;
+            }
+        }
+    }).sort((a, b) => b.compareTo(a));
+    
+    return result;
+}
+
+let result = solve([[10, 5], [5, 12]]);
+console.log(result);
+
+
+/* With explanation
 function solve(input){
     // input.map(([width, height]) => ({ width, height}));
     
@@ -52,3 +73,4 @@ function solve(input){
 }
 
 solve([[10, 5], [5, 12]]);
+*/
