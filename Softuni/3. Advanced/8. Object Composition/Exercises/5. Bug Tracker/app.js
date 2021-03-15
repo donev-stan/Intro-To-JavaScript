@@ -3,7 +3,7 @@ function solve(){
     const comparators = {
         'ID': (a, b) => a[0] - b[0],
         'author': (a, b) => a[1].author.localeCompare(b[1].author),
-        'severity': (a, b) => a[1].severity - b[1].severity
+        'severity': (a, b) => a[1].severity - b[1].severity 
     };
 
     // декларираме колекция с доклади за бъгове, референции към DOM

@@ -47,9 +47,9 @@ console.log(found); // 12
 console.log("> Curring:");
 //-- Always produces nested unary func (that take only one arg)
 let sum = function (a) {
-    return function (b) {
-        return function (c) {
-            return a + b + c;
+    return function (b) { // sumB
+        return function (c) { // sumC
+            return a + b + c; // result
         };
     };
 };
@@ -60,6 +60,16 @@ let result = sumC(3); // и референция към нея
 console.log(result); // 6
 
 console.log(sum(1)(2)(3)); // 6
+
+// function sum(a){
+//     function sumB(b){
+//         function sumC(c){
+//             return a + b + c;
+//         }
+//         return sumC;
+//     }
+//     return sumB;
+// }
 
 
 
