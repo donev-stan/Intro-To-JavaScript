@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bug Tracker</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="titlebar">Bug tracker</div>
+        <button onclick="change()"> Change Status</button>
+        <button onclick="remove()"> Remove</button>
+        <button onclick="sort('ID')"> Sort by ID</button>
+        <button onclick="sort('author')"> Sort by Author</button>
+        <button onclick="sort('severity')"> Sort by Severity</button>
+        <button onclick="add()"> Add a Bug</button>
+
+        <div id="content">
+            <div class="report">
+                <div class="body">
+                    <p>Description</p>
+                </div>
+                <div class="title">
+                    <span class="author">Submitted by: Author</span>
+                    <span class="status">Open | 5</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+    <script> 
+        const bugTracker = solve();
+
+        bugTracker.output('#content');
+        
+        bugTracker.report('Peter', 'I found this bug', true, 1);
+        bugTracker.report('Brian', 'Please fix', false, 3);
+        bugTracker.report('John', 'Button is not working', true, 5);
+        bugTracker.report('Marry', 'Does not compute', false, 2);
+
+        function change(){
+            bugTracker.setStatus(0, 'In progress');
+        }
+
+        function remove(){
+            bugTracker.remove(1);
+        }
+
+        function sort(method){
+            bugTracker.sort(method);
+        }
+
+        function add(){
+            bugTracker.report('Anne', `Problem Here!!`, true, 3);
+        }
+
+    </script>
+</body>
+
+</html>
