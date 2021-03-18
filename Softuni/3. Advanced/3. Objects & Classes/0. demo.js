@@ -12,7 +12,7 @@ let copyOfPersonObj = Object.assign({}, person);
 console.log(person.age); // undefined
 
 // Object.entries/keys/values
-Object.entries(person);         
+const objEntries = Object.entries(person);         
 // [
 //     [key, value],   // ['name', 'Stan']
 //     [key, value],   // ['age', 21]

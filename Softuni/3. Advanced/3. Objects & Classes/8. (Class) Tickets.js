@@ -20,19 +20,23 @@ function solve(tickets, criteria){
 }
 
 let one = solve(
-    ['Philadelphia|94.20|available',
-    'New York City|95.99|available',
-    'New York City|95.99|sold',
-    'Boston|126.20|departed'],      // array is tickets
+    [
+        'Philadelphia|94.20|available',
+        'New York City|95.99|available',
+        'New York City|95.99|sold',
+        'Boston|126.20|departed'
+    ],                          // array is tickets
     'destination'               // 'destination' is criteria
 )
 
 
 let two = solve(
-    ['Philadelphia|94.20|available',
-    'New York City|95.99|available',
-    'New York City|95.99|sold',
-    'Boston|126.20|departed'],
+    [
+        'Philadelphia|94.20|available',
+        'New York City|95.99|available',
+        'New York City|95.99|sold',
+        'Boston|126.20|departed'
+    ],
     'status'
 )
 

@@ -43,12 +43,6 @@ function solve(){
         flavour: 0
     }
 
-    const operations = {
-        restock,
-        prepare,
-        report
-    }
-
     function restock(element, quantity){
         microelements[element] += quantity;
         return 'Success';
@@ -74,14 +68,19 @@ function solve(){
         return `protein: ${microelements.protein} carbohydrate: ${microelements.carbohydrate} fat: ${microelements.fat} flavour: ${microelements.flavour}`;
     }
 
-    function manager(command){
-        const tokens = command.split(' ');
-        return operations[tokens[0]](tokens[1], Number(tokens[2]));
-    }   
-
-    return manager;  
+    return {
+        restock,
+        prepare,
+        report
+    }
 }
 
-let manager = solve();
-console.log(manager('restock flavour 50')); // Success
-console.log(manager('prepare lemonade 4')); // Error: not enough carbohydrate in stock
+const robot = solve();
+console.log(robot.restock('flavour', 50));
+console.log(robot.prepare('lemonade', 4));
+console.log(robot.restock('carbohydrates', 10))
+console.log(robot.restock('flavour', 10))
+console.log(robot.prepare('apple', 1))
+console.log(robot.restock('fat', 10))
+console.log(robot.prepare('burger', 1))
+console.log(robot.report())
