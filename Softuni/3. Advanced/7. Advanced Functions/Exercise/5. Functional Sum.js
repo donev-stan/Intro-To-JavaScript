@@ -19,3 +19,4 @@ function add(x){
 }
 
 console.log(add(1)(3)(-2).toString());
+console.log(add(1).toString());

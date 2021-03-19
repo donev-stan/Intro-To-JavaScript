@@ -30,7 +30,7 @@ function create(words) {
       p.style.display = 'none';
 
       const div = e('div', p);
-      div.addEventListener('click', () => { p.style.display = ''; });
+      div.addEventListener('click', () => { p.style.display = '' });
 
       return div;
    }

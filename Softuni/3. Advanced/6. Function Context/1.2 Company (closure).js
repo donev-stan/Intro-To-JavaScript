@@ -4,10 +4,10 @@ function Company() {
     const index = {};
 
     const company = {
-        departments,
-        index,
-        addEmployee,
-        bestDepartment
+      departments,
+      index,
+      addEmployee,
+      bestDepartment
     };
 
     return company;
