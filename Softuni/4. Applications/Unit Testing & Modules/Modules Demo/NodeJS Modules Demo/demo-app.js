@@ -1,0 +1,1 @@
+const printMSG = require('./demo-module');
