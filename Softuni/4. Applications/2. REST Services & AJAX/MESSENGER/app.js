@@ -13,7 +13,6 @@ function attachEvents() {
     const contentInput = document.getElementById('content');
 
     function refresh(e){
-        //cleanup
         textArea.textContent = '';
 
         fetch(url)
