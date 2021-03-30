@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SWAPI Async-Await</title>
+    </head>
+    <body>
+        <script>
+            async function getName(id) {
+                try { // in async func we can use try catch
+                    let response = await fetch(`https://swapi.dev/api/people/${id}`);
+                    let character = await response.json();
+    
+                    let starshipResponse = await fetch(character.starships[0]);
+                    let starship = await starshipResponse.json();
+                } catch (error) {
+                    console.error(error.message);
+                }
+
+                return `${character.name} - ${starship.name}`;
+            }
+
+            getName(1)
+                .then((name) => console.log(name))
+                .catch((error) => console.log(error.message));
+        </script>
+    </body>
+</html>
