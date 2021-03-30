@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+    <script>
+        let start = Date.now();
+
+        let promise = fetch(`https://swapi.dev/api/people/4`);
+
+        // promise
+        //     .then((response) => {
+        //         console.log(response);
+        //         console.log(`Response promise time - start time: ${Date.now() - start}`);
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //         console.log(Date.now() - start);
+        //     });
+
+        promise
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+            })
+             .catch((error) => {
+                console.log(`In catch block: ${error}`);
+            })
+
+        console.log('The End');
+        console.log(`End of script time - start time: ${Date.now() - start}`);
+    </script>
+</body>
+</html>

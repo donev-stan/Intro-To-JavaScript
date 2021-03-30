@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous Заявки</title>
+</head>
+<body>
+    <script>
+        let start = Date.now();
+
+        let promise = fetch(`https://swapi.dev/api/people/1`);
+
+        promise
+            .then(response => response.json())
+            .then(character => {
+                console.log(character.name);
+                return fetch(character.starships[0])
+            })
+            .then(response => response.json())
+            .then(starship => console.log(starship))
+            .catch(error => {
+                console.log(`In catch block: ${error}`);
+            })
+
+        console.log('The End');
+        console.log(`End of script time - start time: ${Date.now() - start}`);
+    </script>
+</body>
+</html>
