@@ -13,5 +13,3 @@ console.log(getName()); // Promise
 getName()
 	.then(name => console.log(name))
 	.catch(error => console.log(error.message)) // some error here
-
-----
