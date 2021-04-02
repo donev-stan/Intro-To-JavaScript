@@ -46,7 +46,7 @@ function attachEvents() {
                 
                         forecastParentDiv.style.display = "block";
                     })
-                    .catch((error) => console.error(error.message));
+                    .catch((error) => forecastParentDiv.textContent = 'ERROR');
             });
     }
 
