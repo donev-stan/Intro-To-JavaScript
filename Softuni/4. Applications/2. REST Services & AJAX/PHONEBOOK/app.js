@@ -21,22 +21,23 @@ function attachEvents() {
                 console.log(data); // { {}, {}, {}... }
 
                 Object.entries(data).forEach(([id, { person, phone }]) => {
-                    const deleteURL = `https://phonebook-nakov.firebaseio.com/phonebook/${id}.json`;
 
                     let li = document.createElement("li");
+                    li.setAttribute('id', id);
                     li.textContent = `${person}: ${phone}`;
 
                     let deleteBtn = document.createElement("button");
                     deleteBtn.textContent = "Delete";
-                    deleteBtn.addEventListener("click", () => {
-                        fetch(deleteURL, {method: 'DELETE'});
-                       
-                    });
-                    // remove li from view
+                    deleteBtn.addEventListener("click", () => deletE(id));
 
                     li.appendChild(deleteBtn);
                     ul.appendChild(li);
                 });
+            })
+            .catch(error => {
+                let li = document.createElement("li");
+                li.textContent = `No Records`;
+                ul.appendChild(li);
             });
     }
 
@@ -54,8 +55,12 @@ function attachEvents() {
         fetch(url, {method: 'POST', body: contactAsJSON});
     }
 
-    function deletE(e){
+    function deletE(id){
+        const deleteURL = `https://phonebook-nakov.firebaseio.com/phonebook/${id}.json`;
         
+        fetch(deleteURL, {method: 'DELETE'});
+        const liToDelete = document.querySelector(`#${id}`);
+        liToDelete.parentNode.removeChild(liToDelete);
     }
 }
 
