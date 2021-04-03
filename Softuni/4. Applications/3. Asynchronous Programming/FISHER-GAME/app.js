@@ -108,14 +108,6 @@ function attachEvents() {
             })
     }
 
-    function updateBtnCatch(e, catchID, obj){
-        // const catchDiv = e.target.parentElement;
-
-        fetch(`${baseURL}/${catchID}.json`, { method: 'PUT', body: JSON.stringify(obj)})
-            // .then(response => response.json())
-            // .catch(error => console.error(error));
-    }
-
     function deleteCatch(catchID){
         fetch(`${baseURL}/${catchID}.json`, {
             method: 'DELETE'
