@@ -1,1 +1,4 @@
-console.log('TODO...');
+const htmlSelectors = {
+    tableBody: () => document.querySelector('table #results tbody'),
+    
+};

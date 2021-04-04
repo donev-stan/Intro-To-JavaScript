@@ -1,0 +1,99 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <title>Contacts</title>
+</head>
+
+<body>
+  <h1>My contacts</h1>
+  <div id="contacts">
+    <script type="text/x-handlebars-template" id="contact-template">
+      <div class="contact card">
+        <div>
+          <i class="far fa-user-circle gravatar"></i>
+        </div>
+        <div class="info">
+          <h2>Name: {{name}}</h2>
+          <button class="detailsBtn">Details</button>
+          <div class="details" id="{{id}}">
+            <p>Phone number: {{phoneNumber}}</p>
+            <p>Email: {{email}}</p>
+          </div>
+        </div>
+      </div>
+    </script>
+  </div>
+
+  <script type="text/x-handlebars-template" id="contacts-template">
+    {{#each contacts}}
+
+    <div class="contact card">
+      <div>
+        <i class="far fa-user-circle gravatar"></i>
+      </div>
+      <div class="info">
+        <h2>Name: {{name}}</h2>
+        <button class="detailsBtn">Details</button>
+        <div class="details" id="{{id}}">
+          <p>Phone number: {{phoneNumber}}</p>
+          <p>Email: {{email}}</p>
+        </div>
+      </div>
+    </div>
+
+    {{/each}}
+  </script>
+
+  <script src="./node_modules/handlebars/dist/handlebars.min.js"></script>
+  <script src="./contacts.js"></script>
+
+  <script>
+    // console.log(contacts);
+
+    const contactsDiv = document.getElementById('contacts');
+
+    // const contactView = document.getElementById('contact-template').innerHTML;
+    // // console.log(contactView);
+
+    // const contactTemplate = Handlebars.compile(contactView);
+    // // console.log(contactTemplate(contacts[1]));
+
+    // // const contactHtml = contactTemplate(contacts[2]);
+    // const contactsHtml = contacts.map(contact => contactTemplate(contact)).join('');
+
+    // // contactsDiv.innerHTML = contactHtml;
+    // contactsDiv.innerHTML = contactsHtml;
+
+    //--------------
+
+    contactsDiv.addEventListener('click', e => {
+      if (Array.from(e.target.classList).includes('detailsBtn') == false) {
+        return
+      }
+
+      let detailsDiv = e.target.parentElement.querySelector('.details');
+
+      if (detailsDiv.style.display == 'block') {
+        detailsDiv.style.display = 'none';
+      } else {
+        detailsDiv.style.display = 'block';
+      }
+    });
+
+    //-------------------
+
+    const contactsView = document.getElementById('contacts-template').innerHTML;
+    const contactsTemplate = Handlebars.compile(contactsView);
+    const contactsHTML = contactsTemplate({contacts});
+    contactsDiv.innerHTML = contactsHTML;
+
+
+
+  </script>
+</body>
+
+</html>

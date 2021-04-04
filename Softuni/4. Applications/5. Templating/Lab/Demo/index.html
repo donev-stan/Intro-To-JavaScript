@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Templating</title>
+
+        <!-- Handlebars CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    </head>
+    <body>
+        <div class="siteWrapper">
+            <h1>Articles</h1>
+
+            <div id="articles">
+                <script id="article-template" type="text/x-handlebars-template">
+                    <article>
+                        <header>
+                            <h3>{{title}}</h3>
+                            
+                            <section>
+                                <p>{{body}}</p>
+                            </section>
+    
+                            {{#if author}}
+                            <footer>
+                                <p>{{author}}</p>
+                            </footer>
+                            {{/if}}
+                        </header>
+                    </article>
+                </script>
+            </div>
+        </div>
+
+        <script type="module">
+            import createArticle from "./create-Article.js";
+            import articles from "./articles.js";
+            
+            const articlesList = document.getElementById('articles');
+            
+            const articleView = `
+                <article>
+                    <header>
+                        <h3>{{title}}</h3>
+                        
+                        <section>
+                            <p>{{body}}</p>
+                        </section>
+
+                        {{#if author}}
+                        <footer>
+                            <p>{{author}}</p>
+                        </footer>
+                        {{/if}}
+                    </header>
+                </article>
+        `;
+
+            // const articleTemplate = Handlebars.compile(articleView);
+            const articleTemplate = Handlebars.compile(document.getElementById('article-template').innerHTML);
+
+            let articlesHTML = articles.map(article => articleTemplate(article)).join('');
+        
+            // let articlesHTML = articles.map(article => createArticle(article)).join('');
+            articlesList.innerHTML = articlesHTML;
+
+            // console.log(Handlebars);
+            // console.log(createArticle(articles[0]));
+        </script>
+    </body>
+</html>
