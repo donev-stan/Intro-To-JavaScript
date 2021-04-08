@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello Routing!</h1>
+
+    <div id="root"></div>
+
+    <button id="change">Change</button>
+
+    <script>
+        // popstate a copy of the the history entry's state object
+        window.addEventListener('popstate', e => {
+            console.log(window.history.state);
+        });
+
+
+        document.getElementById('change').addEventListener('click', e => {
+            window.history.pushState({name: 'Stan'}, '', `page-${history.length}`); // window. is optional
+        });
+        
+    </script>
+</body>
+</html>

@@ -2,6 +2,7 @@ const elements = {
     allCats: () => document.querySelector('section#allCats')
 };
 
+
 Promise.all(
     [
         getTemplate('./template.hbs'),
@@ -10,6 +11,9 @@ Promise.all(
 ).then(([templateSrc, catSrc]) => {
     Handlebars.registerPartial('cat', catSrc);
     let template = Handlebars.compile(templateSrc);
+
+    console.log(template);
+    
     let htmlResult = template({cats});
     elements['allCats']().innerHTML = htmlResult;
     attachEventListener();
