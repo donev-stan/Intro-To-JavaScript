@@ -1,11 +1,25 @@
+const database = firebase.firestore();
+
 const app = Sammy("#root", function () {
     this.use("Handlebars", "hbs");
 
     // Home Routes
     this.get("/home", function (context) {
-        extendContext(context).then(function () {
-            this.partial("./templates/homeGuest.hbs");
-        });
+
+        context.loggedIn = Boolean(getUserData);
+
+        database
+            .collection('offers')
+            .get()
+            .then(response => {
+                context.offers = response.docs.map(offer => { return {id: offer.id, ...offer.data()} });
+                //  => { return {...}} - we are returning an object
+
+                extendContext(context).then(function () {
+                    this.partial("./templates/home.hbs");
+                });
+            });
+            
     });
 
     // User Routes
@@ -70,11 +84,59 @@ const app = Sammy("#root", function () {
         });
     });
 
+    this.post("/create-offer", function(context){
+        const { productName, price, imageURL, description, brand } = context.params;
+
+        database
+            .collection('offers')
+            .add({
+                productName,
+                price,
+                imageURL,
+                description,
+                brand,
+                salesman: getUserData().uid
+            })
+            .then(createdProduct => {
+                this.redirect('/home');
+            });
+
+    });
+
     this.get("/details", function (context) {
         extendContext(context).then(function () {
             this.partial("./templates/details.hbs");
         });
+     });
+
+    this.get("/details/:offerID", function(context){
+
+        const {offerID} = context.params;
+
+        database
+            .collection('offers')
+            .doc(offerID)
+            .get()
+            .then(response => {
+
+                const actualOfferData = response.data();
+                const imTheSalesman = actualOfferData.salesman === getUserData().uid; 
+
+                context.offer = {...actualOfferData, imTheSalesman};
+
+                extendContext(context).then(function(){
+                    this.partial('./templates/details.hbs');
+                });
+            });
+
     });
+
+    this.get('/delete/:offerID', function(context) {
+        console.log(context);
+
+        const { offerID } = context.params; 
+    });
+
 });
 
 (() => {

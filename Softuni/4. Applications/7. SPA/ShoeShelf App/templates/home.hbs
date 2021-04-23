@@ -1,0 +1,30 @@
+{{>header}}
+<div class="container">
+
+    {{#if loggedIn}}
+        {{#each offers}}
+    <div class="shoes">
+        <div class="shoe">
+            <img src="{{imageURL}}">
+            <h3>{{productName}}</h3>
+            <a href="#/details/{{id}}">Buy it for ${{price}}</a>
+        </div>
+        {{else}}
+        <p>No offers to display right now :(</p>
+    </div>
+        {{/each}}
+
+    {{else}}
+    <div class="about-us">
+        <div>
+            <img src="../public/shoes.jpg">
+            <img src="../public/shoes2.jpg">
+        </div>
+        <p>
+            <a href="#/register">Register Now</a> and Try it!
+        </p>
+    </div>
+    {{/if}}
+
+</div>
+{{>footer}}
