@@ -3,6 +3,7 @@
 const http = require("http");
 const url = require("url");
 const qs = require("querystring");
+const fs = require("fs");
 
 const port = 5000;
 
@@ -18,18 +19,37 @@ const requestHandler = (request, response) => {
 
   switch (requestUrlParsed.pathname) {
     case "/phones":
-      response.write("Welcome to /phones section");
+      response.writeHead(200, {
+        "Content-Type": "text/html",
+      });
+
+      fs.readFile("./views/phones.html", (error, data) => {
+        if (error) {
+          console.error(error);
+          return;
+        }
+
+        response.write(data);
+        response.end();
+      });
       break;
 
     case "/pc":
-      response.write("Welcome to /pc section");
+      response.writeHead(200, {
+        "Content-Type": "text/plain",
+      });
+      response.write("Hello to /pc section page");
+      response.end();
       break;
+
     default:
+      response.writeHead(404, {
+        "Content-Type": "text/plain",
+      });
       response.write("Hello to home page");
+      response.end();
       break;
   }
-
-  response.end();
 };
 
 http
