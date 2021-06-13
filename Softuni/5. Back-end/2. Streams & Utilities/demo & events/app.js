@@ -5,6 +5,7 @@ const http = require("http");
 const url = require("url");
 const qs = require("querystring");
 const fs = require("fs");
+const pubSub = require('./pubSub');
 
 const port = 5000;
 
@@ -28,7 +29,7 @@ const requestHandler = (request, response) => {
         response.end();
       });
 
-      onCatRequest(queryParams.name);
+      pubSub.publish('onCats', queryParams.name);
       break;
 
     default:
