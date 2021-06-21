@@ -41,6 +41,7 @@ const requestHandler = (request, response) => {
 
       pubSub.publish('onCats', queryParams.name);
 
+      // Event
       eventEmitter.emit('onCats', queryParams.name);
       break;
 
