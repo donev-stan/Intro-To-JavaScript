@@ -1,7 +1,7 @@
 const events = {};
 
 module.exports = {
-	// piblish, emit, trigger
+	// publish, emit, trigger
 	publish: (eventName, param) => {
 		if (events.hasOwnProperty(eventName)) {
 			events[eventName].forEach((callback) => {
