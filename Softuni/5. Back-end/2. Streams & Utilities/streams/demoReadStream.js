@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const readStream = fs.createReadStream('../demo & events/views/cats.html');
+const readStream = fs.createReadStream('./cats.html');
 
 readStream.on('data', (data) => {
     console.log(data);
