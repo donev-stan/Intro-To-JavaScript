@@ -9,6 +9,16 @@ const pubSub = require('./pubSub');
 
 const port = 5000;
 
+// --- Events ---
+const events = require('events');
+
+const eventEmitter = new events.EventEmitter();
+
+eventEmitter.on('onCats', (name) => {
+  console.log(`From event emitter: ${name}`);
+});
+// ---
+
 const requestHandler = (request, response) => {
   const requestUrlParsed = url.parse(request.url);
   const queryParams = qs.parse(requestUrlParsed.query);
@@ -30,6 +40,8 @@ const requestHandler = (request, response) => {
       });
 
       pubSub.publish('onCats', queryParams.name);
+
+      eventEmitter.emit('onCats', queryParams.name);
       break;
 
     default:
