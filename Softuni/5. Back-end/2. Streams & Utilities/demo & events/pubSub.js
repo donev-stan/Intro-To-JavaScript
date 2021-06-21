@@ -1,20 +1,26 @@
 const events = {};
 
 module.exports = {
+	// piblish, emit, trigger
+	publish: (eventName, param) => {
+		if (events.hasOwnProperty(eventName)) {
+			events[eventName].forEach((callback) => {
+				callback(param);
+			});
+		}
+	},
 
-    publish: (eventName, param) => {
-        if (events.hasOwnProperty(eventName)) {
-            events[eventName].forEach(callback => {
-                callback(param);
-            });
-        }
-    },
+	// subscribe, on
+	subscribe: (eventName, callback) => {
+		events[eventName] = events[eventName] || [];
 
-    subscribe: (eventName, callback) => {
-        if (events.hasOwnProperty(eventName) == false) {
-            events[eventName] = [];
-        }
+		// if (events.hasOwnProperty(eventName) == false) {
+		//     events[eventName] = [];
+		// }
 
-        events[eventName].push(callback);
-    }
+		events[eventName].push(callback);
+	},
+
+	// unsubscribe, off
+	unsubscribe: (eventName, callback) => {},
 };

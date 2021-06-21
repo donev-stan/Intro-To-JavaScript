@@ -15,7 +15,7 @@ const requestHandler = (request, response) => {
 
   switch (requestUrlParsed.pathname) {
     case "/cats":
-      response.writeHead(200, {
+      response.writeHead(200, { // writeHead - writing in the head
         "Content-Type": "text/html",
       });
 
@@ -25,7 +25,7 @@ const requestHandler = (request, response) => {
           return;
         }
 
-        response.write(data);
+        response.write(data); // write - writing in the body
         response.end();
       });
 
