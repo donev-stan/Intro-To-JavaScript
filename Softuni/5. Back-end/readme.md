@@ -9,3 +9,9 @@
  - Publish/Subscribe Pattern
  - Events
  - FS Module
+
+## 3. ExpressJS & Templating
+ - Router
+ - Static files
+ - Middleware
+ - Handlebars
