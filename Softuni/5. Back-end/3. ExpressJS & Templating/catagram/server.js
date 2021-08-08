@@ -29,4 +29,8 @@ app.get('/download', (request, response) => {
     response.download('./views/home.html');
 });
 
+app.get('/pdf', (request, response) => {
+    response.sendFile('./views/some.pdf', { root: __dirname });
+});
+
 app.listen(5000, () => console.log(` --->>> Server is running on port 5000... <<<--- `)); 
