@@ -1,5 +1,8 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
+const bodyParser = require('body-parser');
+
+const cats = require('./cats');
 
 const app = express();
 
@@ -15,10 +18,10 @@ app.use('/static', express.static('public'))
 app.engine('handlebars', handlebars());
 app.set('view engine', 'handlebars');
 
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', (request, response) => {
     // response.send(`Hello world from express`);
-
 
     let name = 'Stan';
     response.render('home', { name: name });
@@ -26,12 +29,19 @@ app.get('/', (request, response) => {
 
 // https://www.npmjs.com/package/express-handlebars
 app.get('/cats',  (request, response) => {
-    response.render('cats');
+    response.render('cats', {cats: cats.getAll()});
 });
 
 app.post('/cats', (request, response) => {
     console.log('Create a cat request');
-    response.status(201).send(`Cat created!`);
+    console.log(request.body);
+
+    let catName = request.body.cat;
+    cats.add(catName);
+
+    response.redirect('/cats');
+
+    // response.status(201).send(`Cat created!`);
 });
 
 // '/cats/:catID(\\d+)' istead of the if check below
