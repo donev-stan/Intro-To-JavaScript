@@ -1,4 +1,5 @@
 const express = require('express');
+const handlebars = require('express-handlebars');
 
 const app = express();
 
@@ -10,11 +11,25 @@ app.use(loggerMiddleware);
 
 app.use('/static', express.static('public'))
 
+
+app.engine('handlebars', handlebars());
+app.set('view engine', 'handlebars');
+
+
 app.get('/', (request, response) => {
-    response.send(`Hello world from express`);
+    // response.send(`Hello world from express`);
+
+
+    let name = 'Stan';
+    response.render('home', { name: name });
 });
 
-app.post('/create-cat', (request, response) => {
+// https://www.npmjs.com/package/express-handlebars
+app.get('/cats',  (request, response) => {
+    response.render('cats');
+});
+
+app.post('/cats', (request, response) => {
     console.log('Create a cat request');
     response.status(201).send(`Cat created!`);
 });
