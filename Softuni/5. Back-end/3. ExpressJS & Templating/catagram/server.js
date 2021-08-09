@@ -8,6 +8,8 @@ const loggerMiddleware = require('./middlewares/loggerMiddleware');
 // app.use(checkCatIdMiddleware); -> whatever request we get has to go through the middleware
 app.use(loggerMiddleware);
 
+app.use('/static', express.static('public'))
+
 app.get('/', (request, response) => {
     response.send(`Hello world from express`);
 });
